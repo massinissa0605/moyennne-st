@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcul de moyenne</title>
+    <style>
+        /* Ajoutez votre CSS personnalisé ici */
+    </style>
+</head>
+<body>
+    <h1>Calcul de moyenne</h1>
+    <form id="moyenneForm">
+        <label for="tdMath">Note de TD en mathématiques :</label>
+        <input type="number" id="tdMath" required><br>
+        
+        <label for="examMath">Note d'examen en mathématiques :</label>
+        <input type="number" id="examMath" required><br>
+        
+        <label for="tdChemie">Note de TD en chimie :</label>
+        <input type="number" id="tdChemie" required><br>
+        
+        <label for="examChemie">Note d'examen en chimie :</label>
+        <input type="number" id="examChemie" required><br>
+        
+        <label for="tdPhysique">Note de TD en physique :</label>
+        <input type="number" id="tdPhysique" required><br>
+        
+        <label for="examPhysique">Note d'examen en physique :</label>
+        <input type="number" id="examPhysique" required><br>
+        
+        <label for="mst">Note de MST :</label>
+        <input type="number" id="mst" required><br>
+        
+        <label for="ded">Note de DED :</label>
+        <input type="number" id="ded" required><br>
+        
+        <label for="mr">Note de MR :</label>
+        <input type="number" id="mr" required><br>
+        
+        <label for="infoTp">Note de TP informatique :</label>
+        <input type="number" id="infoTp" required><br>
+        
+        <label for="examInfo">Note d'examen informatique :</label>
+        <input type="number" id="examInfo" required><br>
+        
+        <label for="tpPh">Note de TP physique :</label>
+        <input type="number" id="tpPh" required><br>
+        
+        <label for="tpCh">Note de TP chimie :</label>
+        <input type="number" id="tpCh" required><br>
+        
+        <label for="ang">Note d'anglais :</label>
+        <input type="number" id="ang" required><br>
+        
+        <button type="submit">Calculer la moyenne</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        document.getElementById("moyenneForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Empêcher le formulaire de soumettre
+
+            var tdMath = parseFloat(document.getElementById("tdMath").value);
+            var examMath = parseFloat(document.getElementById("examMath").value);
+            var tdChemie = parseFloat(document.getElementById("tdChemie").value);
+            var examChemie = parseFloat(document.getElementById("examChemie").value);
+            var tdPhysique = parseFloat(document.getElementById("tdPhysique").value);
+            var examPhysique = parseFloat(document.getElementById("examPhysique").value);
+            var mst = parseFloat(document.getElementById("mst").value);
+            var ded = parseFloat(document.getElementById("ded").value);
+            var mr = parseFloat(document.getElementById("mr").value);
+            var infoTp = parseFloat(document.getElementById("infoTp").value);
+            var examInfo = parseFloat(document.getElementById("examInfo").value);
+            var tpPh = parseFloat(document.getElementById("tpPh").value);
+            var tpCh = parseFloat(document.getElementById("tpCh").value);
+            var ang = parseFloat(document.getElementById("ang").value);
+
+            var chemie = tdChemie * 0.4 + examChemie * 0.6;
+            var math = examMath * 0.6 + tdMath * 0.4;
+            var physique = tdPhysique * 0.4 + examPhysique * 0.6;
+            var info = infoTp * 0.4 + examInfo * 0.6;
+
+            var uef = (math * 3 + chemie * 3) / 9;
+            var uem = (mr * 1 + info * 2 + tpPh * 1 + tpCh * 1) / 5;
+            var uet = (ang * 1 + ded * 1) / 2;
+
+            var moyenne = (uef * 9 + uem * 5 + uet * 2 + mst) / 17;
+
+            document.getElementById("result").innerHTML = "La moyenne est : " + moyenne.toFixed(3);
+        });
+    </script>
+</body>
+</html>
